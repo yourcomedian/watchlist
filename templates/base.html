@@ -20,12 +20,21 @@
     <nav>
         <ul>
             <li><a href="{{ url_for('index') }}">Home</a></li>
+
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('settings') }}">Settings</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
         </ul>
+
+        
     </nav>
     {% block content %}{% endblock %}
     <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}" title="to~to~ro~">
     <footer>
-        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+        <small>&copy; 2024 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
     </footer>
 </body>
 </html>
